@@ -6,17 +6,18 @@ const {
   deleteItem,
   updateItem,
 } = require("./animals.service");
+const isValidApiKeyMiddleware = require("../../middlewares/isValidApiKey.middleware");
+const { isEditor, isAdmin, isViewer } = require("../../middlewares/isAdmin.middleware");
 
 const animalsRouter = Router();
 
-animalsRouter.get("/", getAllAnimals);
+animalsRouter.use(isValidApiKeyMiddleware);
 
-animalsRouter.get("/:id", getById);
+animalsRouter.get("/", isViewer, getAllAnimals);
+animalsRouter.get("/:id", isViewer, getById);
+animalsRouter.post("/", isEditor, addItem);
+animalsRouter.put("/:id", isEditor, updateItem);
 
-animalsRouter.post("/", addItem);
-
-animalsRouter.delete("/:id", deleteItem);
-
-animalsRouter.put("/:id", updateItem);
+animalsRouter.delete("/:id", isAdmin, deleteItem);
 
 module.exports = animalsRouter;

@@ -1,16 +1,13 @@
-const { Router } = require("express")
+const { Router } = require("express");
+const isValidApiKeyMiddleware = require("../middlewares/isValidApiKey.middleware");
 
 
 const secretRouter = Router()
 
-secretRouter.get("/", (req, res) => {
-    console.log(req.headers);
-    const apiKey = req.headers["api-key"];
-    if (!apiKey || apiKey !== "12345") {
-      return res.status(403).json({ message: "UnAuth", data: null });
-    }
-    res.send("secret info");
-  });
+secretRouter.get("/", isValidApiKeyMiddleware ,(req,res) => {
+  console.log(req.header, "request")
+  res.send("Secret Info")
+} );
   
 
 

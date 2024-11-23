@@ -11,7 +11,7 @@ const { isEditor, isAdmin, isViewer } = require("../../middlewares/isAdmin.middl
 
 const animalsRouter = Router();
 
-animalsRouter.use(isValidApiKeyMiddleware);
+/* animalsRouter.use(isValidApiKeyMiddleware); */
 
 animalsRouter.get("/", isViewer, getAllAnimals);
 animalsRouter.get("/:id", isViewer, getById);

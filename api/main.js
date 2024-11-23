@@ -1,7 +1,7 @@
 const { Router } = require("express");
 const animalsRouter = require("./animals/animals.route");
 const usersRouter = require("./users/users.route");
-const secretRouter = require("../secret/secret.route");
+/* const secretRouter = require("../secret/secret.route"); */
 
 const apiRouter = Router();
 

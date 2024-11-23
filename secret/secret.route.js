@@ -1,4 +1,4 @@
-const { Router } = require("express");
+/* const { Router } = require("express");
 const isValidApiKeyMiddleware = require("../middlewares/isValidApiKey.middleware");
 
 
@@ -12,4 +12,4 @@ secretRouter.get("/", isValidApiKeyMiddleware ,(req,res) => {
 
 
 
-module.exports = secretRouter
+module.exports = secretRouter */

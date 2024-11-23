@@ -73,6 +73,16 @@ app.post("/add", (req, res) => {
 });
 
 
+app.delete("/:id",(req,res) => {
+  const {id} = req.params
+  const findIndex = users.findIndex(el => el.id === Number(id))
+  if(findIndex === -1){
+    return res.status(404).json({message:"Not Found"})
+  }
+  const deleteUser = users.splice(findIndex,1)
+  res.status(200).json({message:"deleted Successfully"})
+})
+
 app.get("/add",(req,res) => {
   res.render("pages/add.ejs")
 })  
